@@ -85,6 +85,15 @@ html {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   padding-top: var(--header-height);
+  /* Full-bleed: break out of whatever boxed/max-width container the
+     page builder (e.g. GoHighLevel) wraps this Custom HTML element in,
+     so the page spans the full browser width regardless of the row/
+     section width setting around it. */
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  overflow-x: hidden;
 }
 
 .cd-page img {
