@@ -590,6 +590,10 @@ html {
   min-height: 320px;
 }
 
+.cd-hero__offers {
+  margin-top: var(--space-2);
+}
+
 /* --------------------------------------------------------------------------
    8. Offer cards
    -------------------------------------------------------------------------- */
@@ -597,7 +601,19 @@ html {
   position: relative;
   display: grid;
   gap: var(--space-4);
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 560px) {
+  .cd-offers {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .cd-offers {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .cd-offer {
@@ -681,6 +697,11 @@ html {
 @media (min-width: 1024px) {
   .cd-hero__grid {
     grid-template-columns: 1.05fr 0.95fr;
+  }
+
+  .cd-hero__offers {
+    grid-column: 1 / -1;
+    margin-top: var(--space-4);
   }
 }
 
