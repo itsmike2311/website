@@ -129,7 +129,7 @@
      so the offers are live and collecting leads today.
      ------------------------------------------------------------------ */
   function initHeroOffers() {
-    var offers = document.querySelectorAll('.cd-offer');
+    var offers = document.querySelectorAll('.cd-hero-offer');
     var offerSelect = document.getElementById('cd-offer');
 
     offers.forEach(function (card) {

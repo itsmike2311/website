@@ -527,200 +527,129 @@ html {
    7. Hero
    -------------------------------------------------------------------------- */
 .cd-hero {
-  position: relative;
-  background: linear-gradient(155deg, var(--cd-blue-darker) 0%, var(--cd-blue) 55%, var(--cd-teal-text) 100%);
-  color: var(--cd-white);
-  padding-top: var(--space-9);
+  padding-top: var(--space-6);
   padding-bottom: var(--space-8);
+}
+
+.cd-hero__frame {
+  position: relative;
+  border-radius: var(--radius-lg);
   overflow: hidden;
 }
 
-.cd-hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle at 85% 20%, rgba(79, 195, 224, 0.35), transparent 55%),
-    radial-gradient(circle at 10% 90%, rgba(245, 166, 35, 0.18), transparent 45%);
-  pointer-events: none;
+.cd-hero__photo.cd-placeholder-img {
+  min-height: 640px;
+  border-radius: 0;
 }
 
-.cd-hero__grid {
-  position: relative;
-  display: grid;
-  gap: var(--space-7);
-  align-items: center;
+.cd-hero__card {
+  position: absolute;
+  top: var(--space-5);
+  left: var(--space-5);
+  right: var(--space-5);
+  z-index: 1;
+  padding: var(--space-5);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(6px);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+@media (min-width: 768px) {
+  .cd-hero__photo.cd-placeholder-img {
+    min-height: 520px;
+  }
+
+  .cd-hero__card {
+    top: var(--space-6);
+    left: var(--space-6);
+    right: auto;
+    max-width: 540px;
+    padding: var(--space-6);
+  }
 }
 
 .cd-hero__badge {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  background: rgba(255, 255, 255, 0.14);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: var(--cd-teal-tint);
+  color: var(--cd-teal-text);
+  border: 1px solid var(--cd-teal);
   padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-pill);
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: 0.8rem;
+  font-weight: 700;
   margin-bottom: var(--space-4);
 }
 
 .cd-hero h1 {
-  color: var(--cd-white);
   margin-bottom: var(--space-4);
 }
 
+.cd-hero__accent {
+  color: var(--cd-blue);
+}
+
 .cd-hero__lede {
-  color: rgba(255, 255, 255, 0.88);
-  font-size: 1.1rem;
-  max-width: 46ch;
+  max-width: 42ch;
 }
 
 .cd-hero__ctas {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
-  margin-bottom: var(--space-7);
-}
-
-.cd-hero__visual {
-  position: relative;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-lg);
-  min-height: 320px;
-}
-
-.cd-hero__offers {
-  margin-top: var(--space-2);
 }
 
 /* --------------------------------------------------------------------------
-   8. Offer cards
+   8. Hero offer strip
    -------------------------------------------------------------------------- */
-.cd-offers {
+.cd-hero__offers {
   position: relative;
+  z-index: 2;
+  margin: calc(var(--space-7) * -1) var(--space-4) 0;
+  background: var(--cd-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-5);
   display: grid;
   gap: var(--space-4);
   grid-template-columns: 1fr;
 }
 
-@media (min-width: 560px) {
-  .cd-offers {
+@media (min-width: 640px) {
+  .cd-hero__offers {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (min-width: 900px) {
-  .cd-offers {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-.cd-offer {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-  background: var(--cd-white);
-  color: var(--cd-ink);
-  border-radius: var(--radius-md);
-  padding: var(--space-5);
-  text-align: left;
-  border: none;
-  cursor: pointer;
-  box-shadow: var(--shadow-md);
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
-}
-
-.cd-offer:hover,
-.cd-offer:focus-visible {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-}
-
-.cd-offer__ribbon {
-  position: absolute;
-  top: var(--space-3);
-  right: var(--space-3);
-  background: var(--cd-amber);
-  color: var(--cd-blue-darker);
-  font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  padding: var(--space-1) var(--space-3);
-  border-radius: var(--radius-pill);
-}
-
-.cd-offer__icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 52px;
-  height: 52px;
-  border-radius: var(--radius-sm);
-  background: var(--cd-teal-tint);
-  color: var(--cd-blue);
-}
-
-.cd-offer__icon .cd-icon {
-  width: 28px;
-  height: 28px;
-}
-
-.cd-offer h3 {
-  margin-bottom: 0;
-  font-size: 1.15rem;
-}
-
-.cd-offer p {
-  font-size: 0.92rem;
-  margin-bottom: var(--space-2);
-}
-
-.cd-offer__cta {
-  margin-top: auto;
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-family: var(--font-display);
-  font-weight: 700;
-  color: var(--cd-blue);
-  font-size: 0.92rem;
-}
-
-.cd-offer:hover .cd-offer__cta,
-.cd-offer:focus-visible .cd-offer__cta {
-  color: var(--cd-teal-text);
-}
-
 @media (min-width: 1024px) {
-  .cd-hero__grid {
-    grid-template-columns: 1.05fr 0.95fr;
-  }
-
   .cd-hero__offers {
-    grid-column: 1 / -1;
-    margin-top: var(--space-4);
+    grid-template-columns: repeat(4, 1fr);
+    margin-inline: var(--space-6);
   }
 }
 
-/* --------------------------------------------------------------------------
-   9. Trust bar
-   -------------------------------------------------------------------------- */
-.cd-trust {
-  display: grid;
-  gap: var(--space-5);
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-}
-
-.cd-trust__item {
+.cd-hero-offer {
   display: flex;
-  gap: var(--space-4);
-  align-items: flex-start;
+  align-items: center;
+  gap: var(--space-3);
+  background: transparent;
+  border: none;
+  text-align: left;
+  padding: var(--space-2);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background var(--transition-fast), transform var(--transition-fast);
 }
 
-.cd-trust__icon {
+.cd-hero-offer:hover,
+.cd-hero-offer:focus-visible {
+  background: var(--cd-teal-tint);
+  transform: translateY(-2px);
+}
+
+.cd-hero-offer__icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -732,91 +661,31 @@ html {
   color: var(--cd-blue);
 }
 
-.cd-trust__icon .cd-icon {
+.cd-hero-offer__icon .cd-icon {
   width: 24px;
   height: 24px;
 }
 
-.cd-trust h3 {
-  font-size: 1.05rem;
-  margin-bottom: var(--space-1);
-}
-
-.cd-trust p {
-  font-size: 0.92rem;
-  margin-bottom: 0;
-}
-
-/* --------------------------------------------------------------------------
-   10. Services
-   -------------------------------------------------------------------------- */
-.cd-services__groups {
-  display: grid;
-  gap: var(--space-6);
-}
-
-.cd-services__group-title {
+.cd-hero-offer__text {
   display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  margin-bottom: var(--space-4);
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
 }
 
-.cd-services__group-title h3 {
-  margin-bottom: 0;
-  font-size: 1.35rem;
+.cd-hero-offer__text strong {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
   color: var(--cd-blue-darker);
 }
 
-.cd-services__group-title .cd-tag {
-  font-family: var(--font-display);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--cd-teal-text);
-  background: var(--cd-teal-tint);
-  padding: var(--space-1) var(--space-3);
-  border-radius: var(--radius-pill);
-}
-
-.cd-service-grid {
-  display: grid;
-  gap: var(--space-4);
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-}
-
-.cd-service-card {
-  background: var(--cd-white);
-  border: 1px solid var(--cd-border);
-  border-radius: var(--radius-md);
-  padding: var(--space-5);
-  transition: box-shadow var(--transition-base), border-color var(--transition-base);
-}
-
-.cd-service-card:hover {
-  box-shadow: var(--shadow-sm);
-  border-color: var(--cd-teal);
-}
-
-.cd-service-card .cd-offer__icon {
-  margin-bottom: var(--space-3);
-}
-
-.cd-service-card p {
-  font-size: 0.92rem;
-  margin-bottom: 0;
-}
-
-@media (min-width: 1024px) {
-  .cd-services__groups {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-7);
-  }
+.cd-hero-offer__text span {
+  font-size: 0.82rem;
+  color: var(--cd-muted);
 }
 
 /* --------------------------------------------------------------------------
-   11. About / office section
+   9. About / office section
    -------------------------------------------------------------------------- */
 .cd-about__grid {
   display: grid;
@@ -846,13 +715,145 @@ html {
   margin-top: 2px;
 }
 
+.cd-about__collage {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  padding-bottom: var(--space-5);
+}
+
+.cd-about__collage-img {
+  min-height: 160px;
+  border-radius: var(--radius-md);
+}
+
+.cd-about__badge {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 20%);
+  background: var(--cd-blue);
+  color: var(--cd-white);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-width: 160px;
+}
+
+.cd-about__badge strong {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.cd-about__badge span {
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-top: var(--space-1);
+}
+
 @media (min-width: 1024px) {
   .cd-about__grid {
     grid-template-columns: 1fr 1fr;
   }
+}
 
-  .cd-about__grid--reverse .cd-about__visual {
-    order: 2;
+/* --------------------------------------------------------------------------
+   10. Services
+   -------------------------------------------------------------------------- */
+.cd-services__layout {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.cd-service-grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+
+.cd-service-grid--6 {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 560px) {
+  .cd-service-grid--6 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.cd-offer__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-sm);
+  background: var(--cd-teal-tint);
+  color: var(--cd-blue);
+}
+
+.cd-offer__icon .cd-icon {
+  width: 28px;
+  height: 28px;
+}
+
+.cd-service-card {
+  background: var(--cd-white);
+  border: 1px solid var(--cd-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  transition: box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.cd-service-card:hover {
+  box-shadow: var(--shadow-sm);
+  border-color: var(--cd-teal);
+}
+
+.cd-service-card .cd-offer__icon {
+  margin-bottom: var(--space-3);
+}
+
+.cd-service-card p {
+  font-size: 0.92rem;
+  margin-bottom: var(--space-3);
+}
+
+.cd-service-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--cd-blue);
+}
+
+.cd-service-card__link:hover {
+  color: var(--cd-teal-text);
+}
+
+.cd-why-panel {
+  background: var(--cd-teal-tint);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+}
+
+.cd-why-panel h3 {
+  margin-top: var(--space-2);
+}
+
+@media (min-width: 1024px) {
+  .cd-services__layout {
+    grid-template-columns: 2fr 1fr;
+    align-items: start;
   }
 }
 
@@ -907,21 +908,21 @@ html {
   font-size: 0.78rem;
 }
 
-.cd-hero .cd-placeholder-img {
-  min-height: 100%;
-  border-color: rgba(255, 255, 255, 0.6);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.05) 60%);
+.cd-hero__photo.cd-placeholder-img {
+  border-radius: 0;
+  border: none;
+  background: linear-gradient(155deg, var(--cd-blue-darker) 0%, var(--cd-blue) 55%, var(--cd-teal-text) 100%);
 }
 
-.cd-hero .cd-placeholder-img__content {
+.cd-hero__photo .cd-placeholder-img__content {
   color: var(--cd-white);
 }
 
-.cd-hero .cd-placeholder-img__content span {
+.cd-hero__photo .cd-placeholder-img__content span {
   color: var(--cd-white);
 }
 
-.cd-hero .cd-placeholder-img__content small {
+.cd-hero__photo .cd-placeholder-img__content small {
   color: rgba(255, 255, 255, 0.75);
 }
 
